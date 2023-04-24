@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css">
+  <title>Lab 3: Mad Libs Project</title>
+  <style>
+    /* Sticky footer styles -------------------------------------------------- */
+    html {
+      position: relative;
+      min-height: 100%;
+    }
+
+    body {
+      margin-bottom: 60px;
+      /* Margin bottom by footer height */
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      /* Set the fixed height of the footer here */
+      line-height: 60px;
+      /* Vertically center the text there */
+      background-color: #f5f5f5;
+    }
+
+
+    /* Custom page CSS -------------------------------------------------- */
+    /* Not required for template or sticky footer method. */
+
+    .container {
+      width: auto;
+      max-width: 680px;
+      padding: 0 15px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Lab 3: Mad Libs Project</h1>
+    <p>Fill out the form below and click the button to see the story.</p>
+    <form method="get" id="form">
+      <div class="form-group">
+        <label for="person">Name</label>
+        <input type="text" class="form-control" id="person" name="person" placeholder="Add your name">
+      </div>
+      <div class="form-group">
+        <label for="verb">Occupation</label>
+        <input type="text" class="form-control" id="verb" name="occupation" placeholder="Add your job">
+      </div>
+      <div class="form-group">
+        <label for="noun">Location</label>
+        <input type="text" class="form-control" id="noun" name="noun" placeholder="Add your location">
+      </div>
+      <div class="phone-number">
+        <label for="phone">Phone Number</label>
+        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Add your phone number">
+      </div>
+      <div class="email">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Add your email">
+    <div class="date-of-birth">
+        <label for="date">Date of Birth</label>
+        <input type="date" class="form-control" id="date" name="date" placeholder="Add your date of birth">
+        </div>
+    <br>
+    <div class="time-of-birth">
+        <label for="time">Time of Birth</label>
+        <input type="time" class="form-control" id="time" name="time" placeholder="Add your time of birth">
+    </div>
+    <div class="url-address">
+        <label for="url">URL Address</label>
+        <input type="url" class="form-control" id="url" name="url" placeholder="Add your url address">
+    </div>
+    <div class="currently-employed">
+        <label for="employed">Currently Employed</label>
+        <input type="checkbox" class="form-control" id="employed" name="employed" placeholder="Add your employment status">
+    </div>
+    <br>
+    <div class="years-of-experience">
+        <label for="experience">Years of Experience</label>
+        <input type="number" class="form-control" id="experience" name="experience" placeholder="Add your years of experience">
+    </div>
+    <br>
+    <div class="salary">
+        <label for="salary">Salary</label>
+        <input type="range" class="form-control" id="salary" name="salary" placeholder="Add your salary">
+    </div>
+    <div class="education">
+        <label for="education">Education</label>
+        <input type="text" class="form-control" id="education" name="education" placeholder="Add your education">
+    </div>
+    <br>
+    <div class="home town">
+        <label for="home">Home Town</label>
+        <input type="text" class="form-control" id="home" name="home" placeholder="Add your home town">
+    </div>
+    <br>
+    <div class="favorite-color">
+        <label for="color">Favorite Color</label>
+        <input type="color" class="form-control" id="color" name="color" placeholder="Add your favorite color">
+    </div>
+    <br>
+    <div class="favorite-food">
+        <label for="food">Favorite Food</label>
+        <input type="text" class="form-control" id="food" name="food" placeholder="Add your favorite food">
+    </div>
+    <div class="favorite-movie">
+        <label for="movie">Favorite Movie</label>
+        <input type="text" class="form-control" id="movie" name="movie" placeholder="Add your favorite movie">
+    </div>
+    <br>
+    <div class="favorite-song">
+        <label for="song">Favorite Song</label>
+        <input type="text" class="form-control" id="song" name="song" placeholder="Add your favorite song">
+    </div>
+    <br>
+    <div class="martital-status">
+        <label for="status">Martital Status</label>
+        <input type="text" class="form-control" id="status" name="status" placeholder="Add your martital status">
+    </div>
+    <br>
+    <div class="number-of-children">
+        <label for="children">Number of Children</label>
+        <input type="number" class="form-control" id="children" name="children" placeholder="Add your number of children">
+    </div>
+    <br>
+    <br>        
+    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div id="story"></div>
+
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <p>Created by <a href="https://goodprofile.me/bryanjoshuagarcia_gmail">Bryan Garcia</a>
+    </div>
+  </footer>
+</body>
+
+<script>
+  // When we click the submit button, log the values of the form.
+  document.getElementById('submit').addEventListener('click', function (event) {
+    console.log(document.getElementById('person').value);
+    console.log(document.getElementById('verb').value);
+    console.log(document.getElementById('noun').value);
+
+    // Hide the form.
+    document.getElementById('form').style.display = 'none';
+
+    //
+    document.getElementById('story').innerHTML = document.getElementById('person').value + ' is a ' + document.getElementById('verb').value + ' in ' + document.getElementById('noun').value;
+  });
+
+  // Get the URL parameters and add them to the form.
+  var urlParams = new URLSearchParams(window.location.search);
+  document.getElementById('person').value = urlParams.get('person');
+  document.getElementById('verb').value = urlParams.get('occupation');
+  document.getElementById('noun').value = urlParams.get('noun');
+
+  // If we have the person, occupation, and noun, hide the form and show the story.
+  if (urlParams.get('person') && urlParams.get('occupation') && urlParams.get('noun')) {
+    document.getElementById('form').style.display = 'none';
+    document.getElementById('story').innerHTML = urlParams.get('person') + ' is a ' + urlParams.get('occupation') + ' in ' + urlParams.get('noun');
+  }
+
+  // Add a link to the story to clear the form.
+  document.getElementById('story').innerHTML += '<br><a class="btn btn-primary" href="index.html">Clear the form</a>';
+
+  // Hide the clear story form link if we don't have a story.
+  if (!urlParams.get('person') || !urlParams.get('occupation') || !urlParams.get('noun')) {
+    document.getElementById('story').style.display = 'none';
+  }
+
+</script>
+
+</html>
